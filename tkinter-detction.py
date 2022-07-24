@@ -40,9 +40,8 @@ def format_image(filename):
         cv2.putText(image,'On Right', (7, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 180, 0), 3)
         cv2.putText(image, str(rightzz) + '%', (7, 100), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 180, 0), 3)
     
-    if int(leftzz) >= 100.00 or int(rightzz) >= 100.00:
+    if leftzz >= 100.00 or rightzz >= 100.00:
         cv2.putText(image,'No Tumor detected', (7, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 180, 0), 3)
-
 
     image = cv2.resize(image, (540, 540))
     return image
