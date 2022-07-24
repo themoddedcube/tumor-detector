@@ -29,18 +29,18 @@ def format_image(filename):
 
     left_pixels = cv2.countNonZero(left)
     right_pixels = cv2.countNonZero(right)
-    leftzz = f'{ round(((left_pixels)/(left_pixels + right_pixels)) * 100, 2)}'
-    rightzz = f'{ round(((right_pixels)/(left_pixels + right_pixels)) * 100, 2)}'
+    leftzz = round(((left_pixels)/(left_pixels + right_pixels)) * 100, 2)
+    rightzz = round(((right_pixels)/(left_pixels + right_pixels)) * 100, 2)
 
     if left_pixels > right_pixels:
         cv2.putText(image,'On Left', (7, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 180, 0), 3)
-        cv2.putText(image, leftzz + '%', (7, 100), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 180, 0), 3)
+        cv2.putText(image, str(leftzz) + '%', (7, 100), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 180, 0), 3)
         
     if right_pixels > left_pixels:
         cv2.putText(image,'On Right', (7, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 180, 0), 3)
-        cv2.putText(image, rightzz + '%', (7, 100), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 180, 0), 3)
+        cv2.putText(image, str(rightzz) + '%', (7, 100), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 180, 0), 3)
     
-    if leftzz >= 100.00 or rightzz >= 100.00:
+    if int(leftzz) >= 100.00 or int(rightzz) >= 100.00:
         cv2.putText(image,'No Tumor detected', (7, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 180, 0), 3)
 
 
